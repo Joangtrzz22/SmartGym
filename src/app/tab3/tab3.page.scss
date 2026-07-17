@@ -1,0 +1,36 @@
+#map {
+  width: 100%;
+  height: calc(100vh - 170px);
+  border-radius: 12px;
+  margin-top: 10px;
+}
+
+.estado-conexion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+}
+
+.estado-conexion h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+ion-badge {
+  font-size: 14px;
+  padding: 8px 12px;
+}
+
+ion-fab {
+  margin-bottom: 20px;
+  margin-right: 10px;
+}
+
+ion-content {
+  --padding-start: 12px;
+  --padding-end: 12px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+}

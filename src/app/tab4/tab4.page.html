@@ -1,0 +1,90 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>SmartGym Multimedia</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <h2>🎧 Podcasts SmartGym</h2>
+
+  <ion-list>
+
+    @for (podcast of podcasts; track podcast.id) {
+
+      <ion-item>
+
+        <ion-label>
+          <h3>{{ podcast.titulo }}</h3>
+          <p>{{ podcast.descripcion }}</p>
+        </ion-label>
+
+      </ion-item>
+
+    }
+
+  </ion-list>
+
+  <ion-range
+    min="0"
+    max="100"
+    [(ngModel)]="progreso">
+  </ion-range>
+
+  <div class="controles-audio">
+
+    <ion-button color="success" (click)="playAudio()">
+      ▶️ Play
+    </ion-button>
+
+    <ion-button color="warning" (click)="pauseAudio()">
+      ⏸️ Pause
+    </ion-button>
+
+    <ion-button color="danger" (click)="stopAudio()">
+      ⏹️ Stop
+    </ion-button>
+
+  </div>
+
+  <h2>📷 Cámara</h2>
+
+  <div class="botones">
+
+    <ion-button color="primary" (click)="tomarFoto()">
+      Tomar Foto
+    </ion-button>
+
+  </div>
+
+  @if (foto) {
+
+    <div class="imagen">
+
+      <img [src]="foto" alt="Foto tomada">
+
+    </div>
+
+  }
+
+  <h2>📱 Registro de Asistencia</h2>
+
+  <div class="botones">
+
+    <ion-button color="tertiary" (click)="escanearQR()">
+      Escanear QR
+    </ion-button>
+
+  </div>
+
+  @if (mensajeQR) {
+
+    <div class="mensaje-qr">
+
+      {{ mensajeQR }}
+
+    </div>
+
+  }
+
+</ion-content>

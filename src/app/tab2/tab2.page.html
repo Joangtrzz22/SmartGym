@@ -1,17 +1,77 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
+<ion-header>
+  <ion-toolbar color="primary">
     <ion-title>
-      Tab 2
+      Mis Rutinas
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-refresher slot="fixed" (ionRefresh)="refrescar($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-item>
+
+    <ion-input
+      placeholder="Nueva rutina..."
+      [(ngModel)]="nuevaRutina">
+    </ion-input>
+
+    <ion-button
+      slot="end"
+      (click)="agregarRutina()">
+      Agregar
+    </ion-button>
+
+  </ion-item>
+
+  <ion-reorder-group
+    [disabled]="false"
+    (ionItemReorder)="reordenar($event)">
+
+    @for(rutina of rutinas; track rutina.id){
+
+      <ion-item-sliding>
+
+        <ion-item
+          (mousedown)="iniciarLongPress(rutina)"
+          (mouseup)="cancelarLongPress()"
+          (mouseleave)="cancelarLongPress()">
+
+          <ion-checkbox
+            slot="start"
+            [checked]="rutina.completada"
+            (ionChange)="cambiarEstado(rutina.id)">
+          </ion-checkbox>
+
+          <ion-label (click)="editarRutina(rutina)">
+
+  {{ rutina.nombre }}
+
+</ion-label>
+
+          <ion-reorder slot="end"></ion-reorder>
+
+        </ion-item>
+
+        <ion-item-options side="end">
+
+          <ion-item-option
+            color="danger"
+            (click)="eliminar(rutina.id)">
+
+            Eliminar
+
+          </ion-item-option>
+
+        </ion-item-options>
+
+      </ion-item-sliding>
+
+    }
+
+  </ion-reorder-group>
+
 </ion-content>

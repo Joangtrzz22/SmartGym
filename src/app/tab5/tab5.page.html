@@ -1,0 +1,155 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Perfil SmartGym</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- Perfil -->
+
+  <ion-card>
+
+    <div class="perfil">
+
+      <img
+  src="assets/Perfil.jpg"
+  alt="Foto de Perfil">
+      <h2>{{ nombre }}</h2>
+
+      <p>{{ objetivo }}</p>
+
+      <p>{{ correo }}</p>
+
+    </div>
+
+  </ion-card>
+
+  <!-- Configuración -->
+
+  <h2 class="titulo">⚙ Configuración</h2>
+
+  <ion-list>
+
+    <ion-item>
+
+      <ion-label>Recordar sesión</ion-label>
+
+      <ion-toggle
+        [(ngModel)]="recordarSesion"
+        (ionChange)="guardarConfiguracion()">
+      </ion-toggle>
+
+    </ion-item>
+
+    <ion-item>
+
+      <ion-label>Notificaciones</ion-label>
+
+      <ion-toggle
+        [(ngModel)]="notificaciones"
+        (ionChange)="guardarConfiguracion()">
+      </ion-toggle>
+
+    </ion-item>
+
+    <ion-item>
+
+      <ion-label>Modo oscuro</ion-label>
+
+      <ion-toggle
+        [(ngModel)]="modoOscuro"
+        (ionChange)="guardarConfiguracion()">
+      </ion-toggle>
+
+    </ion-item>
+
+  </ion-list>
+
+  <!-- Bluetooth -->
+
+  <h2 class="titulo">📶 Bluetooth LE</h2>
+
+  <div class="botones">
+
+    <ion-button
+      color="primary"
+      (click)="buscarDispositivos()">
+
+      Buscar dispositivos
+
+    </ion-button>
+
+  </div>
+
+  @if (dispositivos.length > 0) {
+
+    <ion-list>
+
+      @for (dispositivo of dispositivos; track dispositivo) {
+
+        <ion-item>
+
+          <ion-label>
+
+            {{ dispositivo }}
+
+          </ion-label>
+
+        </ion-item>
+
+      }
+
+    </ion-list>
+
+  }
+
+  <!-- NFC -->
+
+  <h2 class="titulo">📲 NFC</h2>
+
+  <div class="botones">
+
+    <ion-button
+      color="secondary"
+      (click)="compartirRutina()">
+
+      Compartir Rutina
+
+    </ion-button>
+
+  </div>
+
+  @if (mensajeNFC) {
+
+    <div class="estado">
+
+      {{ mensajeNFC }}
+
+    </div>
+
+  }
+
+  <!-- Historial -->
+
+  <h2 class="titulo">📋 Historial</h2>
+
+  <ion-list class="historial">
+
+    @for (item of historial; track item) {
+
+      <ion-item>
+
+        <ion-label>
+
+          {{ item }}
+
+        </ion-label>
+
+      </ion-item>
+
+    }
+
+  </ion-list>
+
+</ion-content>
