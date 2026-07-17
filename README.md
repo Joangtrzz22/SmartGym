@@ -77,8 +77,8 @@ ionic serve
 
 ---
 
-Participante: Joan Gutierrez
+Participante:
 
 | Nombre | Matrícula | Módulo asignado |
 |---------|-----------|-----------------|
-| Joan Gutierrez | **(Tu matrícula)** | Desarrollo completo de SmartGym (Inicio, Rutinas, Mapa, Multimedia y Perfil) |
+| Joan Gutierrez | 100020541 | Desarrollo completo de SmartGym (Inicio, Rutinas, Mapa, Multimedia y Perfil) |
